@@ -1,0 +1,563 @@
+/* ==============================
+   Premium Wedding Invitation CSS
+   Где менять цвета: редактируйте CSS-переменные в :root.
+   Где менять шрифты: замените --font-serif и --font-sans.
+   ============================== */
+:root {
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Manrope', Helvetica, sans-serif;
+  --cream: #fbf6ee;
+  --paper: rgba(255, 250, 242, 0.82);
+  --paper-strong: rgba(255, 250, 242, 0.94);
+  --ink: #45382f;
+  --muted: #8b7767;
+  --gold: #b99762;
+  --rose: #d8aaa5;
+  --shadow: 0 24px 80px rgba(80, 58, 42, 0.22);
+  --radius: 30px;
+}
+
+/* Базовая адаптивная настройка: mobile-first, плавный scroll и аккуратная типографика. */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  background: var(--cream);
+  line-height: 1.7;
+}
+
+/* Общая фоновая фотография страницы. Где менять фото: images/background.jpg. */
+.page-background {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(rgba(42, 31, 25, 0.18), rgba(42, 31, 25, 0.34)), url('images/background.jpg') center/cover no-repeat;
+}
+.page-background::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 20%, rgba(255,255,255,0.42), transparent 38%), linear-gradient(to bottom, rgba(251,246,238,0.2), rgba(251,246,238,0.86));
+}
+
+/* Узкий центральный блок: на desktop сохраняет ощущение мобильного премиального приглашения. */
+.invitation-shell {
+  width: min(100%, 540px);
+  margin: 0 auto;
+  padding: 18px 14px 36px;
+}
+
+/* Общие секции. Где менять расстояния: padding/margin в .section. */
+.section {
+  margin: 18px 0;
+  padding: 38px 24px;
+  border-radius: var(--radius);
+  background: rgba(255, 250, 242, 0.68);
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.section-card { background: var(--paper-strong); }
+/* Фон для выбранных контентных блоков: "Дорогие гости", карусели, тайминг, дорога, пожелания и анкета. */
+.section.section-photo-bg {
+  background:
+    linear-gradient(rgba(255, 250, 242, 0.70), rgba(255, 250, 242, 0.82)),
+    url('images/other-backgrounds.jpg') center/cover no-repeat;
+}
+h1, h2, h3 {
+  margin: 0 0 14px;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+h1 { font-size: clamp(54px, 16vw, 88px); line-height: 0.9; }
+h2 { font-size: clamp(34px, 10vw, 52px); line-height: 1; }
+h3 { font-size: 28px; }
+p { margin: 0 0 16px; }
+.eyebrow {
+  margin-bottom: 12px;
+  color: var(--gold);
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+.accent-line {
+  color: var(--gold);
+  font-family: var(--font-serif);
+  font-size: 28px;
+}
+
+/* Hero: светлый полупрозрачный слой поверх романтичной фотографии. */
+.hero {
+  min-height: 92vh;
+  display: grid;
+  place-items: center;
+  position: relative;
+  text-align: center;
+  background: url('images/main-background.jpg') center/cover no-repeat;
+}
+.hero__overlay {
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(255,255,255,0.72);
+  border-radius: calc(var(--radius) - 8px);
+  /*background: linear-gradient(to bottom, rgba(255,250,242,0.30), rgba(255,250,242,0.72));*/
+}
+.hero__content { position: relative; padding: 28px; }
+.heart-mark { color: var(--rose); font-family: var(--font-serif); font-size: 44px; }
+.hero__date { color: var(--muted); font-family: var(--font-serif); font-size: 25px; }
+
+/* Календарь. День свадьбы выделяется сердцем через JS. */
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-top: 22px;
+}
+.calendar__cell {
+  min-height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  color: var(--muted);
+  background: rgba(255,255,255,0.42);
+  font-family: var(--font-serif);
+  font-size: 21px;
+}
+.calendar__cell--head { color: var(--gold); font-family: var(--font-sans); font-size: 11px; text-transform: uppercase; }
+.calendar__cell--empty { opacity: 0; }
+.calendar__cell--wedding {
+  position: relative;
+  color: #fff;
+  background: var(--rose);
+}
+.calendar__cell--wedding::after {
+  content: '♡';
+  position: absolute;
+  inset: -13px auto auto 50%;
+  transform: translateX(-50%);
+  color: var(--rose);
+  font-size: 24px;
+}
+
+/* Countdown: компактные карточки с обновлением в реальном времени. */
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.countdown div {
+  padding: 14px 6px;
+  border: 1px solid rgba(185,151,98,0.25);
+  border-radius: 20px;
+  text-align: center;
+  background: rgba(255,255,255,0.52);
+}
+.countdown strong { display: block; font-family: var(--font-serif); font-size: 31px; line-height: 1; }
+.countdown span { color: var(--muted); font-size: 11px; }
+.countdown-message { margin-top: 14px; color: var(--gold); }
+
+/* Карусели: Vanilla JS меняет transform у track, CSS отвечает за плавность. */
+.carousel { position: relative; }
+.carousel__track {
+  display: flex;
+  border-radius: 28px;
+  overflow: hidden;
+  transition: transform 650ms cubic-bezier(.2,.8,.2,1);
+  touch-action: pan-y;
+}
+.carousel img {
+  flex: 0 0 100%;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+}
+.carousel__button {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255,255,255,0.72);
+  border-radius: 999px;
+  color: var(--ink);
+  background: rgba(255,250,242,0.72);
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+.carousel__button--prev { left: 10px; }
+.carousel__button--next { right: 10px; }
+
+/* Premium-карусель "Наша история": отдельные стили для реальных фото из images/carousel. */
+.story-carousel {
+  position: relative;
+  width: min(100%, 700px);
+  margin: 18px auto 0;
+  padding: 10px;
+  border: 1px solid rgba(255,255,255,0.52);
+  border-radius: 30px;
+  background: linear-gradient(145deg, rgba(255,250,242,0.50), rgba(255,255,255,0.24));
+  box-shadow: 0 28px 76px rgba(80,58,42,0.22);
+}
+.story-carousel__viewport {
+  position: relative;
+  height: clamp(420px, 118vw, 520px);
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(255,250,242,0.42);
+}
+.story-carousel__track {
+  display: flex;
+  height: 100%;
+  opacity: 1;
+  transition: transform 900ms cubic-bezier(.19, 1, .22, 1);
+  will-change: transform;
+  touch-action: pan-y;
+}
+.story-carousel__track.is-moving {
+  opacity: 0.92;
+  transition: transform 900ms cubic-bezier(.19, 1, .22, 1), opacity 420ms ease;
+}
+.story-carousel__slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.96) contrast(1.02);
+}
+.story-carousel__button {
+  position: absolute;
+  top: 50%;
+  z-index: 3;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255,255,255,0.72);
+  border-radius: 999px;
+  color: var(--ink);
+  background: rgba(255,250,242,0.74);
+  box-shadow: 0 10px 26px rgba(80,58,42,0.18);
+  font-family: var(--font-serif);
+  font-size: 34px;
+  line-height: 1;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: transform 220ms ease, background 220ms ease, box-shadow 220ms ease;
+}
+.story-carousel__button:hover {
+  background: rgba(255,250,242,0.94);
+  box-shadow: 0 14px 32px rgba(80,58,42,0.22);
+}
+.story-carousel__button:active {
+  transform: translateY(-50%) scale(0.96);
+}
+.story-carousel__button--prev { left: 20px; }
+.story-carousel__button--next { right: 20px; }
+.story-carousel__dots {
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  z-index: 3;
+  display: flex;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid rgba(255,255,255,0.52);
+  border-radius: 999px;
+  background: rgba(255,250,242,0.54);
+  backdrop-filter: blur(12px);
+  transform: translateX(-50%);
+}
+.story-carousel__dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(139,119,103,0.42);
+  cursor: pointer;
+  transition: width 260ms ease, background 260ms ease, transform 260ms ease;
+}
+.story-carousel__dot.is-active {
+  width: 24px;
+  background: var(--gold);
+}
+
+/* Тайминг: один из главных визуальных блоков. Направления появления задаются классами left/right. */
+.timeline-section {
+  background: linear-gradient(145deg, rgba(255,250,242,0.92), rgba(232,216,195,0.76));
+}
+.timeline { position: relative; display: grid; gap: 14px; margin-top: 26px; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: linear-gradient(var(--gold), transparent);
+}
+.timeline__item {
+  position: relative;
+  width: 88%;
+  padding: 18px 20px;
+  border: 1px solid rgba(185,151,98,0.22);
+  border-radius: 24px;
+  background: rgba(255,255,255,0.64);
+  box-shadow: 0 14px 34px rgba(80,58,42,0.12);
+  opacity: 0;
+  transition: opacity 650ms ease, transform 650ms ease;
+}
+.timeline__item--left { justify-self: start; transform: translateX(-42px); }
+.timeline__item--right { justify-self: end; transform: translateX(42px); }
+.timeline__item.is-visible { opacity: 1; transform: translateX(0); }
+.timeline__item time { display: block; color: var(--gold); font-family: var(--font-serif); font-size: 34px; line-height: 1; }
+.timeline__item span { color: var(--ink); }
+
+/* Место, пожелания, палитра и формы. */
+.rounded-photo, .final-photo img {
+  width: 100%;
+  border-radius: 28px;
+  object-fit: cover;
+}
+.rounded-photo { aspect-ratio: 4 / 3; margin-top: 10px; }
+.map-placeholder {
+  min-height: 230px;
+  margin: 18px 0;
+  border: 1px solid rgba(185,151,98,0.28);
+  border-radius: 28px;
+  color: var(--muted);
+  background: rgba(255,255,255,0.46);
+  text-align: center;
+  overflow: hidden;
+}
+.map-placeholder iframe {
+  display: block;
+  width: 100%;
+  min-height: 230px;
+  border: 0;
+}
+.button {
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+  padding: 15px 20px;
+  border: 1px solid rgba(185,151,98,0.52);
+  border-radius: 999px;
+  color: var(--ink);
+  background: rgba(255,255,255,0.52);
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 200ms ease, background 200ms ease;
+}
+.button:hover { transform: translateY(-2px); background: rgba(255,255,255,0.82); }
+.palette { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.palette__color {
+  min-height: 88px;
+  display: grid;
+  place-items: end center;
+  padding: 12px;
+  border-radius: 24px;
+  background: var(--tone);
+  color: rgba(69,56,47,0.78);
+  font-size: 12px;
+}
+.wish-grid { display: grid; gap: 12px; }
+.wish-card {
+  padding: 22px;
+  border-radius: 24px;
+  background: var(--paper-strong);
+  box-shadow: 0 12px 34px rgba(80,58,42,0.12);
+}
+/* RSVP-форма: ровная сетка, мягкие поля и карточки статуса в общей свадебной палитре. */
+.rsvp-title {
+  max-width: 420px;
+  font-size: clamp(42px, 12vw, 54px);
+}
+.rsvp-form {
+  width: min(100%, 620px);
+  display: grid;
+  gap: 18px;
+  margin: 22px auto 0;
+}
+.form-field {
+  display: grid;
+  gap: 8px;
+}
+.form-field label,
+.form-label {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.rsvp-form input[type="text"] {
+  width: 100%;
+  min-height: 60px;
+  padding: 0 18px;
+  border: 1px solid rgba(185,151,98,0.32);
+  border-radius: 20px;
+  color: var(--ink);
+  background: rgba(255,255,255,0.72);
+  font: inherit;
+  outline: none;
+  transition: border-color 220ms ease, background 220ms ease, box-shadow 220ms ease;
+}
+.rsvp-form input[type="text"]::placeholder {
+  color: rgba(139,119,103,0.58);
+}
+.rsvp-form input[type="text"]:focus {
+  border-color: rgba(185,151,98,0.78);
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 0 0 4px rgba(185,151,98,0.12);
+}
+
+/* Статус присутствия: вся строка кликабельна, radio стилизован без синего браузерного вида. */
+.attendance-options {
+  display: grid;
+  gap: 10px;
+}
+.attendance-option {
+  position: relative;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(185,151,98,0.30);
+  border-radius: 20px;
+  background: rgba(255,255,255,0.56);
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 220ms ease, background 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+.attendance-option:hover {
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.78);
+}
+.attendance-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.attendance-option__radio {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  border: 1px solid rgba(185,151,98,0.58);
+  border-radius: 999px;
+  background: rgba(255,250,242,0.74);
+  box-shadow: inset 0 0 0 5px rgba(255,250,242,0.9);
+  transition: background 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+.attendance-option__text {
+  flex: 1;
+  font-size: 14px;
+  line-height: 1.35;
+}
+.attendance-option:has(input:checked) {
+  border-color: rgba(185,151,98,0.78);
+  background: linear-gradient(135deg, rgba(255,255,255,0.86), rgba(248,241,231,0.86));
+  box-shadow: 0 12px 28px rgba(80,58,42,0.08);
+}
+.attendance-option:has(input:checked) .attendance-option__radio {
+  border-color: var(--gold);
+  background: var(--rose);
+  box-shadow: inset 0 0 0 6px rgba(255,250,242,0.95), 0 0 0 4px rgba(216,170,165,0.18);
+}
+.partner-field {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-8px);
+  transition: max-height 420ms ease, opacity 320ms ease, transform 320ms ease;
+}
+.partner-field.is-visible {
+  max-height: 170px;
+  opacity: 1;
+  transform: translateY(0);
+}
+.field-error {
+  min-height: 18px;
+  margin: 0;
+  color: #9b4f45;
+  font-size: 12px;
+  line-height: 1.45;
+}
+.form-message {
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  color: var(--gold);
+  text-align: center;
+}
+.form-message:not(:empty) {
+  padding: 14px 16px;
+  border: 1px solid rgba(185,151,98,0.24);
+  border-radius: 20px;
+  background: rgba(255,255,255,0.56);
+}
+.form-message.is-error {
+  border-color: rgba(155,79,69,0.24);
+  color: #9b4f45;
+  background: rgba(255,246,244,0.74);
+}
+.rsvp-submit {
+  min-height: 62px;
+  align-items: center;
+  border-radius: 20px;
+}
+.rsvp-submit:active {
+  transform: translateY(0);
+}
+.rsvp-submit:disabled {
+  opacity: 0.68;
+  cursor: progress;
+  transform: none;
+}
+
+/* Финальная фотография и footer. */
+.final-photo { position: relative; padding: 0; background: transparent; }
+.final-photo img { aspect-ratio: 3 / 4; display: block; }
+.final-photo__caption {
+  position: absolute;
+  inset: auto 18px 18px;
+  padding: 26px 20px;
+  border-radius: 26px;
+  background: rgba(255,250,242,0.76);
+  text-align: center;
+  backdrop-filter: blur(12px);
+}
+.footer {
+  width: min(100%, 540px);
+  margin: 0 auto;
+  padding: 24px 20px 46px;
+  color: var(--cream);
+  text-align: center;
+  text-shadow: 0 2px 18px rgba(0,0,0,0.32);
+}
+.footer p:first-child { font-family: var(--font-serif); font-size: 34px; }
+
+/* Анимации появления секций при скролле через IntersectionObserver. */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 900ms ease, transform 900ms ease;
+}
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+.hero.reveal { transform: scale(0.985); }
+.hero.reveal.is-visible { transform: scale(1); }
+
+/* Где менять адаптив: desktop-улучшения ниже, основа остается mobile-first. */
+@media (min-width: 680px) {
+  .invitation-shell { padding-top: 28px; }
+  .section { padding: 46px 34px; }
+  .hero { min-height: 820px; }
+  .story-carousel__viewport { height: clamp(520px, 82vw, 620px); }
+}

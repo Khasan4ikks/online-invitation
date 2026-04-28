@@ -61,11 +61,15 @@
     <section class="section section-photo-bg reveal">
       <p class="eyebrow">Наша история</p>
       <div class="story-carousel" data-story-carousel>
-        <button class="story-carousel__button story-carousel__button--prev" type="button" aria-label="Предыдущее фото">‹</button>
+        <button class="story-carousel__button story-carousel__button--prev" type="button" aria-label="Предыдущее фото">
+          <img src="images/left.png" alt="" aria-hidden="true" />
+        </button>
         <div class="story-carousel__viewport">
           <div class="story-carousel__track" data-story-carousel-track></div>
         </div>
-        <button class="story-carousel__button story-carousel__button--next" type="button" aria-label="Следующее фото">›</button>
+        <button class="story-carousel__button story-carousel__button--next" type="button" aria-label="Следующее фото">
+          <img src="images/right.png" alt="" aria-hidden="true" />
+        </button>
         <div class="story-carousel__dots" data-story-carousel-dots aria-label="Индикаторы фотографий"></div>
       </div>
     </section>
@@ -80,20 +84,6 @@
         <article class="timeline__item timeline__item--left" data-timeline-item><time>17:00</time><span>Банкет</span></article>
         <article class="timeline__item timeline__item--right" data-timeline-item><time>22:00</time><span>Торт</span></article>
         <article class="timeline__item timeline__item--left" data-timeline-item><time>23:00</time><span>Завершение вечера</span></article>
-      </div>
-    </section>
-
-    <!-- 7. ВТОРАЯ КАРУСЕЛЬ. Где менять фотографии: замените src или добавьте новые img. -->
-    <section class="section section-photo-bg reveal">
-      <p class="eyebrow">Моменты</p>
-      <div class="carousel" data-carousel>
-        <button class="carousel__button carousel__button--prev" type="button" aria-label="Предыдущее фото">‹</button>
-        <div class="carousel__track">
-          <img src="images/gallery-2.jpg" alt="Фотография пары 4" />
-          <img src="images/gallery-3.jpg" alt="Фотография пары 5" />
-          <img src="images/gallery-1.jpg" alt="Фотография пары 6" />
-        </div>
-        <button class="carousel__button carousel__button--next" type="button" aria-label="Следующее фото">›</button>
       </div>
     </section>
 
@@ -124,17 +114,14 @@
       <a class="button" data-yandex-map-link href="#" target="_blank" rel="noopener">Открыть в Яндекс Картах</a>
     </section>
 
-    <!-- 10. ДРЕСС-КОД. Где менять текст и цвета: редактируйте текст и CSS-переменные style у .palette__color. -->
-    <section class="section section-card reveal">
+    <!-- 10. ДРЕСС-КОД. Где менять текст: редактируйте заголовок и абзацы внутри .dress-card. -->
+    <section class="section section-card dress-card reveal">
       <p class="eyebrow">Дресс-код</p>
-      <h2>Нежная палитра вечера</h2>
-      <p>Будем благодарны, если вы поддержите мягкую природную гамму: молочный, шампань, пыльная роза, шалфей и теплый беж.</p>
-      <div class="palette">
-        <span class="palette__color" style="--tone:#f8f1e7">Молочный</span>
-        <span class="palette__color" style="--tone:#e8d8c3">Шампань</span>
-        <span class="palette__color" style="--tone:#d8aaa5">Пыльная роза</span>
-        <span class="palette__color" style="--tone:#aeb9a2">Шалфей</span>
-      </div>
+      <span class="dress-card__icon" aria-hidden="true">♡</span>
+      <h2>Свободный стиль</h2>
+      <p>Для нас главное — ваше присутствие и хорошее настроение.</p>
+      <p>Выбирайте образ, в котором вам будет комфортно и празднично.</p>
+      <p>Будем рады видеть вас красивыми, счастливыми и собой.</p>
     </section>
 
     <!-- 11. ДЕТАЛИ И ПОЖЕЛАНИЯ. Где менять тексты: редактируйте карточки .wish-card. -->
@@ -142,22 +129,8 @@
       <p class="eyebrow">Детали и пожелания</p>
       <div class="wish-grid">
         <article class="wish-card"><h3>Подарки</h3><p>Ваше присутствие для нас главное. Если захотите порадовать нас подарком, будем благодарны за вклад в семейную мечту.</p></article>
-        <article class="wish-card"><h3>Цветы</h3><p>Просим не дарить цветы: вместо букетов можно выбрать бутылочку любимого вина или теплую открытку.</p></article>
+        <article class="wish-card"><h3>Цветы</h3><p>Ваши тёплые слова и присутствие для нас важнее всего. Если захотите порадовать нас цветами, выбирайте небольшие нежные букеты.</p></article>
         <article class="wish-card"><h3>Детали</h3><p>Пожалуйста, подтвердите присутствие заранее, чтобы мы могли подготовить для каждого гостя уютное место.</p></article>
-      </div>
-    </section>
-
-    <!-- 12. ТРЕТЬЯ КАРУСЕЛЬ. Где менять фотографии: замените файлы в images. -->
-    <section class="section section-photo-bg reveal">
-      <p class="eyebrow">Счастливые кадры</p>
-      <div class="carousel" data-carousel>
-        <button class="carousel__button carousel__button--prev" type="button" aria-label="Предыдущее фото">‹</button>
-        <div class="carousel__track">
-          <img src="images/gallery-3.jpg" alt="Фотография пары 7" />
-          <img src="images/gallery-1.jpg" alt="Фотография пары 8" />
-          <img src="images/gallery-2.jpg" alt="Фотография пары 9" />
-        </div>
-        <button class="carousel__button carousel__button--next" type="button" aria-label="Следующее фото">›</button>
       </div>
     </section>
 
@@ -203,20 +176,6 @@
       </form>
     </section>
 
-    <!-- 14. ЧЕТВЕРТАЯ КАРУСЕЛЬ. Где менять фотографии: замените src. -->
-    <section class="section section-photo-bg reveal">
-      <p class="eyebrow">Еще немного нас</p>
-      <div class="carousel" data-carousel>
-        <button class="carousel__button carousel__button--prev" type="button" aria-label="Предыдущее фото">‹</button>
-        <div class="carousel__track">
-          <img src="images/gallery-1.jpg" alt="Фотография пары 10" />
-          <img src="images/gallery-3.jpg" alt="Фотография пары 11" />
-          <img src="images/gallery-2.jpg" alt="Фотография пары 12" />
-        </div>
-        <button class="carousel__button carousel__button--next" type="button" aria-label="Следующее фото">›</button>
-      </div>
-    </section>
-
     <!-- 15. ЧАТ ГОСТЕЙ. Где менять ссылку на Telegram-чат: config.telegramChatUrl в script.js. -->
     <section class="section section-card reveal">
       <p class="eyebrow">Чат гостей</p>
@@ -225,9 +184,9 @@
       <a class="button" data-telegram-link href="#" target="_blank" rel="noopener">Вступить в чат</a>
     </section>
 
-    <!-- 16. ФИНАЛЬНАЯ ФОТОГРАФИЯ. Где менять фото: замените images/final.jpg. Где менять текст: редактируйте h2. -->
+    <!-- 16. ФИНАЛЬНАЯ ФОТОГРАФИЯ. Где менять фото: замените файл в images/last-photo. Где менять текст: редактируйте h2. -->
     <section class="final-photo section reveal">
-      <img src="images/final.jpg" alt="Финальная фотография пары" />
+      <img src="images/last-photo/last-photo.jpg" alt="Финальная фотография пары" />
       <div class="final-photo__caption"><h2>Будем рады вас видеть!</h2></div>
     </section>
   </main>

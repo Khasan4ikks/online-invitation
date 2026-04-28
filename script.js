@@ -209,31 +209,6 @@ function initCalendar() {
   }
 }
 
-/* Карусель: кнопки, свайп на телефоне и плавная смена фотографий без библиотек. */
-function initCarousels() {
-  document.querySelectorAll('[data-carousel]').forEach((carousel) => {
-    const track = carousel.querySelector('.carousel__track');
-    const slides = Array.from(track.querySelectorAll('img'));
-    const prevButton = carousel.querySelector('.carousel__button--prev');
-    const nextButton = carousel.querySelector('.carousel__button--next');
-    let index = 0;
-    let startX = 0;
-
-    function showSlide(nextIndex) {
-      index = (nextIndex + slides.length) % slides.length;
-      track.style.transform = `translateX(-${index * 100}%)`;
-    }
-
-    prevButton.addEventListener('click', () => showSlide(index - 1));
-    nextButton.addEventListener('click', () => showSlide(index + 1));
-    track.addEventListener('touchstart', (event) => { startX = event.touches[0].clientX; }, { passive: true });
-    track.addEventListener('touchend', (event) => {
-      const delta = event.changedTouches[0].clientX - startX;
-      if (Math.abs(delta) > 45) showSlide(delta < 0 ? index + 1 : index - 1);
-    });
-  });
-}
-
 /* Анимация появления блоков: IntersectionObserver добавляет .is-visible, когда блок входит в экран. */
 function initRevealAnimations() {
   const observer = new IntersectionObserver((entries) => {
@@ -377,7 +352,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initCalendar();
   initCountdown();
   initOurStoryCarousel();
-  initCarousels();
   initRevealAnimations();
   initTimelineAnimations();
   initRsvpForm();

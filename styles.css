@@ -78,6 +78,7 @@ h1 { font-size: clamp(54px, 16vw, 88px); line-height: 0.9; }
 h2 { font-size: clamp(34px, 10vw, 52px); line-height: 1; }
 h3 { font-size: 28px; }
 p { margin: 0 0 16px; }
+.section-hidden { display: none; }
 .eyebrow {
   margin-bottom: 12px;
   color: var(--gold);
@@ -98,20 +99,31 @@ p { margin: 0 0 16px; }
   place-items: center;
   position: relative;
   text-align: center;
-  background: url('images/main-background.jpg') center/cover no-repeat;
+  background: url('images/main-photo.jpg') center/cover no-repeat;
 }
 .hero__overlay {
   position: absolute;
   inset: 14px;
   border: 1px solid rgba(255,255,255,0.72);
   border-radius: calc(var(--radius) - 8px);
-  /*background: linear-gradient(to bottom, rgba(255,250,242,0.30), rgba(255,250,242,0.72));*/
+  background: linear-gradient(to bottom, rgba(255,250,242,0.18), rgba(255,250,242,0.34));
 }
 .hero__content { position: relative; padding: 28px; }
+.hero__title {
+  font-family: var(--font-script);
+  font-weight: 400;
+  letter-spacing: 0;
+  transform: rotate(-1deg);
+}
 .heart-mark { color: var(--rose); font-family: var(--font-serif); font-size: 44px; }
-.hero__date { color: var(--muted); font-family: var(--font-serif); font-size: 25px; }
+.hero__date {
+  color: rgba(255, 250, 242, 0.96);
+  font-family: var(--font-serif);
+  font-size: 25px;
+  text-shadow: 0 2px 16px rgba(45, 34, 27, 0.42);
+}
 
-/* Календарь. День свадьбы выделяется сердцем через JS. */
+/* Календарь. День свадьбы выделяется цветом. */
 .calendar {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -134,14 +146,6 @@ p { margin: 0 0 16px; }
   position: relative;
   color: #fff;
   background: var(--rose);
-}
-.calendar__cell--wedding::after {
-  content: '♡';
-  position: absolute;
-  inset: -13px auto auto 50%;
-  transform: translateX(-50%);
-  color: var(--rose);
-  font-size: 24px;
 }
 
 /* Countdown: компактные карточки с обновлением в реальном времени. */

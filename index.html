@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <!-- Где менять шрифты: можно заменить ссылки Google Fonts и font-family в styles.css. -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500&family=Marck+Script&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -105,7 +105,7 @@
         <!-- Яндекс.Карта. Где менять iframe-ссылку: config.yandexMapsEmbedUrl в script.js. -->
         <iframe
           data-yandex-map-frame
-          src="https://yandex.ru/map-widget/v1/?text=%D0%93%D0%B0%D0%BB%D0%B0%D0%BA%D1%82%D0%B8%D0%BE%D0%BD%D0%BE%D0%B2%D0%B0%2C%2015%2C%20%D0%90%D1%80%D1%81%D0%BA"
+          src="https://yandex.ru/map-widget/v1/?ll=49.874842%2C56.091110&z=17&pt=49.874842%2C56.091110%2Cpm2rdm"
           title="Яндекс.Карта: ул. Галактионова, 15, Арск"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade">
@@ -128,9 +128,49 @@
     <section class="section section-photo-bg reveal">
       <p class="eyebrow">Детали и пожелания</p>
       <div class="wish-grid">
-        <article class="wish-card"><h3>Подарки</h3><p>Ваше присутствие для нас главное. Если захотите порадовать нас подарком, будем благодарны за вклад в семейную мечту.</p></article>
-        <article class="wish-card"><h3>Цветы</h3><p>Ваши тёплые слова и присутствие для нас важнее всего. Если захотите порадовать нас цветами, выбирайте небольшие нежные букеты.</p></article>
-        <article class="wish-card"><h3>Детали</h3><p>Пожалуйста, подтвердите присутствие заранее, чтобы мы могли подготовить для каждого гостя уютное место.</p></article>
+        <article class="wish-card">
+          <div class="wish-card__heading">
+            <span class="wish-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M20 12v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8" />
+                <path d="M2 7h20v5H2z" />
+                <path d="M12 22V7" />
+                <path d="M12 7H7.5a2.5 2.5 0 1 1 0-5C11 2 12 7 12 7z" />
+                <path d="M12 7h4.5a2.5 2.5 0 1 0 0-5C13 2 12 7 12 7z" />
+              </svg>
+            </span>
+            <h3>Подарки</h3>
+          </div>
+          <p>Ваше присутствие для нас главное. Если захотите порадовать нас подарком, будем благодарны за вклад в семейную мечту.</p>
+        </article>
+        <article class="wish-card">
+          <div class="wish-card__heading">
+            <span class="wish-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M12 21s-3-5.2-3-9.2" />
+                <path d="M12 21s3-5.2 3-9.2" />
+                <path d="M8.2 10.4A3.1 3.1 0 1 1 12 6.1a3.1 3.1 0 1 1 3.8 4.3A3.1 3.1 0 1 1 12 14a3.1 3.1 0 1 1-3.8-3.6z" />
+                <path d="M12 10.2h.01" />
+                <path d="M6.5 18.5c2.3.5 3.9.5 5.5 2.5 1.6-2 3.2-2 5.5-2.5" />
+              </svg>
+            </span>
+            <h3>Цветы</h3>
+          </div>
+          <p>Ваши тёплые слова и присутствие для нас важнее всего. Если захотите порадовать нас цветами, выбирайте небольшие нежные букеты.</p>
+        </article>
+        <article class="wish-card">
+          <div class="wish-card__heading">
+            <span class="wish-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M12 3l1.7 4.7L18 10l-4.3 2.3L12 17l-1.7-4.7L6 10l4.3-2.3L12 3z" />
+                <path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z" />
+                <path d="M5 14l.7 1.8L7.5 16.5l-1.8.7L5 19l-.7-1.8-1.8-.7 1.8-.7L5 14z" />
+              </svg>
+            </span>
+            <h3>Детали</h3>
+          </div>
+          <p>Пожалуйста, подтвердите присутствие заранее, чтобы мы могли подготовить для каждого гостя уютное место.</p>
+        </article>
       </div>
     </section>
 
@@ -195,7 +235,6 @@
   <footer class="footer reveal">
     <p data-couple-name>Азат и Залида</p>
     <p data-wedding-date-label>23 августа 2026</p>
-    <span>С любовью и ожиданием встречи</span>
   </footer>
 
   <script src="script.js"></script>

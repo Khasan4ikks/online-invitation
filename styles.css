@@ -6,6 +6,7 @@
 :root {
   --font-serif: 'Cormorant Garamond', Georgia, serif;
   --font-sans: 'Manrope', Helvetica, sans-serif;
+  --font-script: 'Marck Script', cursive;
   --cream: #fbf6ee;
   --paper: rgba(255, 250, 242, 0.82);
   --paper-strong: rgba(255, 250, 242, 0.94);
@@ -359,12 +360,77 @@ p { margin: 0 0 16px; }
   margin-right: auto;
   color: var(--muted);
 }
-.wish-grid { display: grid; gap: 12px; }
+.wish-grid { display: grid; gap: 14px; }
 .wish-card {
-  padding: 22px;
-  border-radius: 24px;
-  background: var(--paper-strong);
-  box-shadow: 0 12px 34px rgba(80,58,42,0.12);
+  position: relative;
+  padding: 24px 22px;
+  border: 1px solid rgba(185,151,98,0.24);
+  border-radius: 26px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,0.84), rgba(255,250,242,0.70)),
+    var(--paper-strong);
+  box-shadow: 0 16px 38px rgba(80,58,42,0.13);
+  overflow: hidden;
+  transition: transform 240ms ease, border-color 240ms ease, box-shadow 240ms ease, background 240ms ease;
+}
+.wish-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 88% 16%, rgba(216,170,165,0.18), transparent 32%);
+  pointer-events: none;
+}
+.wish-card__heading {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+.wish-card__icon {
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(185,151,98,0.28);
+  border-radius: 999px;
+  color: var(--gold);
+  background: linear-gradient(145deg, rgba(255,255,255,0.88), rgba(248,241,231,0.72));
+  box-shadow: 0 10px 22px rgba(80,58,42,0.10);
+}
+.wish-card:nth-child(2) .wish-card__icon { color: var(--rose); }
+.wish-card:nth-child(3) .wish-card__icon { color: rgba(139,119,103,0.92); }
+.wish-card__icon svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.wish-card h3 {
+  margin: 0;
+  font-size: 23px;
+}
+.wish-card p {
+  position: relative;
+  margin: 0;
+  padding-left: 52px;
+  color: var(--muted);
+}
+@media (hover: hover) and (pointer: fine) {
+  .wish-card:hover {
+    border-color: rgba(185,151,98,0.42);
+    background:
+      linear-gradient(145deg, rgba(255,255,255,0.94), rgba(255,250,242,0.78)),
+      var(--paper-strong);
+    box-shadow: 0 22px 48px rgba(80,58,42,0.17);
+    transform: translateY(-3px);
+  }
 }
 /* RSVP-форма: ровная сетка, мягкие поля и карточки статуса в общей свадебной палитре. */
 .rsvp-title {
@@ -531,10 +597,24 @@ p { margin: 0 0 16px; }
   margin: 0 auto;
   padding: 24px 20px 46px;
   color: var(--cream);
+  font-family: var(--font-script);
   text-align: center;
   text-shadow: 0 2px 18px rgba(0,0,0,0.32);
+  color: #222120;
 }
-.footer p:first-child { font-family: var(--font-serif); font-size: 34px; }
+.footer p {
+  margin-bottom: 4px;
+  font-size: 28px;
+  line-height: 1.08;
+  letter-spacing: 0;
+  color: #45382f;
+}
+.footer p:first-child {
+  font-size: 46px;
+  transform: rotate(-1deg);
+
+  color: #252322;
+}
 
 /* Анимации появления секций при скролле через IntersectionObserver. */
 .reveal {

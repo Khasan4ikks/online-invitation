@@ -17,8 +17,8 @@ const config = {
   venueDescription: 'Элегантная площадка с торжественной атмосферой для нашего свадебного вечера.',
 
   // Где менять ссылку на Яндекс.Карты.
-  yandexMapsUrl: 'https://yandex.ru/maps/?text=%D0%93%D0%B0%D0%BB%D0%B0%D0%BA%D1%82%D0%B8%D0%BE%D0%BD%D0%BE%D0%B2%D0%B0%2C%2015%2C%20%D0%90%D1%80%D1%81%D0%BA',
-  yandexMapsEmbedUrl: 'https://yandex.ru/map-widget/v1/?text=%D0%93%D0%B0%D0%BB%D0%B0%D0%BA%D1%82%D0%B8%D0%BE%D0%BD%D0%BE%D0%B2%D0%B0%2C%2015%2C%20%D0%90%D1%80%D1%81%D0%BA',
+  yandexMapsUrl: 'https://yandex.ru/maps/?ll=49.874842%2C56.091110&z=17&pt=49.874842%2C56.091110%2Cpm2rdm&text=%D1%83%D0%BB%D0%B8%D1%86%D0%B0%20%D0%93%D0%B0%D0%BB%D0%B0%D0%BA%D1%82%D0%B8%D0%BE%D0%BD%D0%BE%D0%B2%D0%B0%2C%2015%2C%20%D0%90%D1%80%D1%81%D0%BA',
+  yandexMapsEmbedUrl: 'https://yandex.ru/map-widget/v1/?ll=49.874842%2C56.091110&z=17&pt=49.874842%2C56.091110%2Cpm2rdm',
 
   // Где менять ссылку на Telegram-чат гостей.
   telegramChatUrl: 'https://t.me/your_wedding_chat',

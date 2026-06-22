@@ -4,7 +4,7 @@
    ===================================================== */
 const config = {
   // Где менять имена пары.
-  coupleNameHero: 'Азат + Залида',
+  coupleNameHero: 'Азат & Залида',
   coupleNameFooter: 'Азат и Залида',
 
   // Где менять дату свадьбы. Формат ISO: YYYY-MM-DDTHH:mm:ss+TZ.

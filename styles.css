@@ -74,7 +74,7 @@ h1, h2, h3 {
   font-weight: 500;
   letter-spacing: 0.02em;
 }
-h1 { font-size: clamp(54px, 16vw, 88px); line-height: 0.9; }
+h1 { font-size: clamp(50px, 9vw,64px); line-height: 1.1; }
 h2 { font-size: clamp(34px, 10vw, 52px); line-height: 1; }
 h3 { font-size: 28px; }
 p { margin: 0 0 16px; }
@@ -82,7 +82,7 @@ p { margin: 0 0 16px; }
 .eyebrow {
   margin-bottom: 12px;
   color: var(--gold);
-  font-size: 12px;
+  font-size: 18px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
 }
@@ -108,15 +108,31 @@ p { margin: 0 0 16px; }
   border-radius: calc(var(--radius) - 8px);
   background: linear-gradient(to bottom, rgba(255,250,242,0.18), rgba(255,250,242,0.34));
 }
-.hero__content { position: relative; padding: 28px; }
+.hero__content { padding: 28px; }
+.hero__content > * {
+  position: relative;
+  z-index: 1;
+}
+.hero .eyebrow {
+  color: #373736;
+  font-size: 22px;
+  letter-spacing: 0.2em;
+  text-shadow: 0 1px 10px rgba(255, 250, 242, 0.42);
+}
 .hero__title {
-  font-family: var(--font-script);
+  font-family: 'Caveat', cursive;
   font-weight: 400;
   letter-spacing: 0;
   transform: rotate(-1deg);
+
 }
 .heart-mark { color: var(--rose); font-family: var(--font-serif); font-size: 44px; }
 .hero__date {
+  position: absolute;
+  z-index: 1;
+  left: 24px;
+  right: 24px;
+  bottom: 34px;
   color: rgba(255, 250, 242, 0.96);
   font-family: var(--font-serif);
   font-size: 25px;
@@ -589,12 +605,20 @@ p { margin: 0 0 16px; }
 .final-photo img { aspect-ratio: 3 / 4; display: block; }
 .final-photo__caption {
   position: absolute;
-  inset: auto 18px 18px;
-  padding: 26px 20px;
-  border-radius: 26px;
-  background: rgba(255,250,242,0.76);
+  inset: auto 18px 24px;
+  padding: 0;
   text-align: center;
-  backdrop-filter: blur(12px);
+}
+.final-photo__caption h2 {
+  margin: 0;
+  color: rgba(255, 250, 242, 0.96);
+  font-family: var(--font-script);
+  font-size: clamp(46px, 14vw, 64px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: 0;
+  text-shadow: 0 3px 18px rgba(45, 34, 27, 0.58);
+  transform: rotate(-2deg);
 }
 .footer {
   width: min(100%, 540px);
@@ -614,9 +638,17 @@ p { margin: 0 0 16px; }
   color: #45382f;
 }
 .footer p:first-child {
+  font-family: var(--font-sans);
   font-size: 46px;
   transform: rotate(-1deg);
 
+  color: #252322;
+}
+
+.footer p.footer__title {
+  font-family: 'Caveat', cursive;
+  font-size: 46px;
+  transform: rotate(-1deg);
   color: #252322;
 }
 
